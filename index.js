@@ -109,6 +109,20 @@ app.get('/api/lists/:userId', async (req, res) => {
   res.status(200).json(data);
 });
 
+//Get list by Id
+app.get('/api/listById/:listId', async (req, res) => {
+  const { listId } = req.params;
+
+  const { data, error } = await supabase  
+  .from('todolist_general_data')
+  .select('*')
+  .eq('id', listId)
+  if (error) {
+    return res.status(500).json({ error: error.message });
+  }
+  res.status(200).json({status: 200, data});
+});
+
 //Create new todo list
 app.post('/api/lists/new', async (req, res) => {
   const { created_at, user_id, active, category, list_name, scheduled, status, updated_at } = req.body;
