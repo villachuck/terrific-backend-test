@@ -18,26 +18,46 @@ app.post('/api/login', async (req, res) => {
     if (error) {
       return res.status(400).json({ error: error.message, status: 400 });
     }
+
+    const session_token = data.session?.access_token;
+    const supb_user = data.user?.id;
   
-    res.status(200).json({ message: 'Usuario autenticado exitosamente', token: data.session.access_token, status: 200 });
+    res.status(200).json({ status: 200, token: session_token, user: supb_user });
 });
 
 //Find user
 app.post('/api/getUser', async (req, res) => {
-  const { email, password } = req.body;
+  const { email, supabase_uid } = req.body;
   const token = req.headers.authorization.split(' ')[1];
 
     const { data, error } = await supabase
       .from('users')
       .select('id')
       .eq('email', email)
-      .eq('password', password)
+      .eq('base_id', supabase_uid)
       .single();
 
     if (error) {
       return res.status(500).json({ error: error.message });
     }
     res.status(200).json({ status: 200, id: data.id });
+});
+
+//Registration on Supabase for new users
+app.post('/api/register', async (req, res) => {
+  const { email, password } = req.body;
+
+  // Registrar usuario en Supabase
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password
+  });
+
+  if (error) {
+    return res.status(400).json({ error: error.message });
+  }
+
+  res.status(200).json({status: 200, data});
 });
 
 //List all categories
