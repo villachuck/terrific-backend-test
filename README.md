@@ -6,7 +6,7 @@ link: http://frontend-terrific-test-ew9y2dg1q.vercel.app
 user: emailfortest@gmail.com
 pass: 1234556
 
-If you wanna install the project and use it, feel free to use it. You need to clone this repository and run the backend with the command: node index.js
+If you wanna install the project and use it, feel free to do it. You need to clone this repository and run the backend with the command: node index.js
 
 Thanks in advance,
 Carlos
