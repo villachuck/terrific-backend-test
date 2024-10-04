@@ -223,17 +223,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
 });
-/* app.get('/api/users/:id', usrId);
-app.get('/api/lists/:userid', filterList);
-app.get('/api/lists/detail/:listid', detail);
-app.get('/api/categories', category);
-
-app.post('/api/users', createNewUser);
-app.post('/api/login', login);
-app.post('/api/lists', createNewList);
-app.post('/api/lists/detail', createNewDetail);
-app.post('/api/categories', createNewCategory);
-
-app.patch('/api/lists/:id', updateList);
-app.patch('/api/lists/detail/:id', updateDetails); */
 
