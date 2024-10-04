@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('Welcome to Carlos Villavicencio app');
+  res.send('Welcome to Carlos Villavicencio app');   
 });
 
 //Login to Supabase
